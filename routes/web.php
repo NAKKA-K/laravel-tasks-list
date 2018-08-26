@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ */
+Route::get('/', function() {
+    return view('tasks');
+})
+
+
+/**
+ * 新タスク追加
+ */
+Route::post('/tasks', function(Request $request) {
+
+})
+
+/**
+ * 既存タスク削除
+ */
+Route::delete('/tasks/{id}', function($id) {
+
+})
