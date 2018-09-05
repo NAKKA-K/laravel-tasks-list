@@ -11,6 +11,9 @@
 |
 */
 
+use App\Task;
+use Illuminate\Http\Request;
+
 /**
  */
 Route::get('/', function() {
@@ -18,7 +21,7 @@ Route::get('/', function() {
     return view('tasks', [
         'tasks' => $tasks
     ]);
-})
+});
 
 
 /**
@@ -39,12 +42,14 @@ Route::post('/tasks', function(Request $request) {
     $task->name = $request->name;
     $task->save();
 
-    return redirect('/')
-})
+    return redirect('/');
+});
 
 /**
  * 既存タスク削除
  */
 Route::delete('/tasks/{id}', function($id) {
+    Task::findOrFail($id)->delete();
 
-})
+    return redirect('/');
+});
