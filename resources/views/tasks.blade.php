@@ -7,7 +7,7 @@
         @include('common.errors')
 
         <!-- 新タスクフォーム -->
-        <form action="/task" method="POST" class="form-horizontal">
+        <form action="/tasks" method="POST" class="form-horizontal">
             {{ csrf_field()  }}
 
             <!-- タスク名 -->
@@ -55,7 +55,12 @@
                                 </td>
 
                                 <td>
-                                    <!-- TODO: 削除ボタン -->
+                                    <form action="/tasks/{{ $task->id }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button>タスク削除</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
